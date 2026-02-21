@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "deny": ["Read(/.env)"],
+    "allow": [
+      "Read(/)",
+      "Bash(bun fmt *)",
+      "Bash(bun fmt:check *)",
+      "Bash(bun lint *)",
+      "Bash(bun lint:fix *)",
+      "Bash(bun typecheck *)",
+      "Bash(bun build *)",
+      "WebFetch(domain:data.go.kr)"
+    ]
+  }
+}

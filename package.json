@@ -1,0 +1,34 @@
+{
+  "name": "home-dashboard",
+  "type": "module",
+  "scripts": {
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "typecheck": "bun tsc --noEmit",
+    "dev": "vite",
+    "build": "vite build --mode client && vite build"
+  },
+  "dependencies": {
+    "@date-fns/tz": "^1.4.1",
+    "@fontsource/pretendard": "^5.2.5",
+    "@googleapis/calendar": "^14.2.0",
+    "date-fns": "^4.1.0",
+    "google-auth-library": "^10.5.0",
+    "hono": "^4.11.9",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss": "^4.1.18",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@hono/vite-build": "^1.9.3",
+    "@hono/vite-dev-server": "^0.25.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/bun": "latest",
+    "oxfmt": "^0.33.0",
+    "oxlint": "^1.48.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  }
+}
