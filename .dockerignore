@@ -1,0 +1,9 @@
+.env
+.env.*
+node_modules
+dist
+.git
+.gitignore
+README.md
+flake.nix
+flake.lock
