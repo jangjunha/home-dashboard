@@ -54,7 +54,9 @@ export const loadSettings = (): {
   busStations: BusStations;
   calendars: Calendars;
 } => ({
-  locations: process.env.LOCATIONS ? locationsSchema.parse(process.env.LOCATIONS) : [],
-  busStations: process.env.BUS_STATIONS ? busStationsSchema.parse(process.env.BUS_STATIONS) : [],
-  calendars: process.env.CALENDARS ? calendarsSchema.parse(process.env.CALENDARS) : [],
+  locations: process.env.LOCATIONS ? locationsSchema.parse(JSON.parse(process.env.LOCATIONS)) : [],
+  busStations: process.env.BUS_STATIONS
+    ? busStationsSchema.parse(JSON.parse(process.env.BUS_STATIONS))
+    : [],
+  calendars: process.env.CALENDARS ? calendarsSchema.parse(JSON.parse(process.env.CALENDARS)) : [],
 });
