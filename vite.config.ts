@@ -14,7 +14,9 @@ export default defineConfig(({ mode }) => {
         rollupOptions: {
           input: "./src/client.tsx",
           output: {
-            entryFileNames: "static/client.js",
+            dir: "./dist/static",
+            entryFileNames: "client.js",
+            assetFileNames: "[name].[ext]",
           },
         },
       },

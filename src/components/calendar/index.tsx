@@ -64,17 +64,15 @@ const EventRow: FC<{ event: CalendarEvent; showDate: boolean }> = ({ event, show
         class={twMerge(
           "w-1 rounded-full flex-shrink-0",
           isOngoing ? "h-10" : "h-10",
-          settings.calendars.find((c) => c.name === event.calendarName)?.style?.bg,
+          settings.calendars.find((c) => c.id === event.calendarId)?.style?.bg,
         )}
       />
       <div class="flex-1 min-w-0">
         <div class="font-medium truncate">
           <span
-            class={twMerge(
-              settings.calendars.find((c) => c.name === event.calendarName)?.style?.text,
-            )}
+            class={twMerge(settings.calendars.find((c) => c.id === event.calendarId)?.style?.text)}
           >
-            {event.calendarName}
+            {settings.calendars.find((c) => c.id === event.calendarId)?.name}
           </span>{" "}
           {event.title}
         </div>

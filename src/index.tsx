@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { serveStatic } from "hono/bun";
 import { createContext } from "hono/jsx";
 import { getAllWeather, Weather } from "./components/weather";
 import { BusInfo, fetchAllBusArrivals } from "./components/bus";
@@ -12,7 +13,7 @@ const app = new Hono();
 
 export const SettingsContext = createContext(settings);
 
-const routes = app.get("/", async (c) => {
+const routes = app.use("/static/*", serveStatic({ root: "./dist" })).get("/", async (c) => {
   const [busData, weatherInfo, calendarData] = await Promise.all([
     fetchAllBusArrivals(settings.busStations),
     getAllWeather(settings.locations).catch((error) => {

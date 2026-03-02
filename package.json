@@ -7,12 +7,16 @@
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "typecheck": "bun tsc --noEmit",
-    "dev": "vite",
-    "build": "vite build --mode client && vite build"
+    "css": "tailwindcss -i src/style.css -o dist/style.css",
+    "dev": "concurrently \"bun dev:server\" \"bun dev:client\" \"bun dev:css\"",
+    "dev:server": "bun run --hot src/index.tsx",
+    "dev:client": "bun build src/client.tsx --outdir dist/static/ --watch",
+    "build:client": "bun build src/client.tsx --outdir dist/static/ --minify",
+    "dev:css": "tailwindcss -i src/style.css -o dist/static/style.css --watch",
+    "build:css": "tailwindcss -i src/style.css -o dist/static/style.css --minify"
   },
   "dependencies": {
     "@date-fns/tz": "^1.4.1",
-    "@fontsource/pretendard": "^5.2.5",
     "@googleapis/calendar": "^14.2.0",
     "date-fns": "^4.1.0",
     "google-auth-library": "^10.5.0",
@@ -22,13 +26,11 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@hono/vite-build": "^1.9.3",
-    "@hono/vite-dev-server": "^0.25.0",
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/cli": "^4.2.1",
     "@types/bun": "latest",
+    "concurrently": "^9.2.1",
     "oxfmt": "^0.33.0",
     "oxlint": "^1.48.0",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1"
+    "typescript": "^5.9.3"
   }
 }
