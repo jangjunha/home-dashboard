@@ -3,6 +3,17 @@ import { render } from "hono/jsx/dom";
 
 // const client = hc<AppType>("/");
 
+const RefresherApp = () => {
+  useEffect(() => {
+    const timerId = window.setTimeout(() => {
+      window.location.reload();
+    }, 60 * 1000);
+    return () => timerId !== null && window.clearInterval(timerId);
+  }, []);
+  return <></>;
+};
+render(<RefresherApp />, document.getElementById("refresher-root")!);
+
 const ClockApp = () => {
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
@@ -20,7 +31,7 @@ const ClockApp = () => {
     };
 
     tick();
-    return () => timerId !== null && window.clearInterval(timerId);
+    return () => timerId !== null && window.clearTimeout(timerId);
   }, []);
 
   return (

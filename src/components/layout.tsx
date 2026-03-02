@@ -13,7 +13,10 @@ export const Layout: FC = (props) => {
           <link rel="stylesheet" href="/static/style.css" />
           <script type="module" src="/static/client.js" />
         </head>
-        <body class="bg-neutral-900 text-white min-h-screen">{props.children}</body>
+        <body class="bg-neutral-900 text-white min-h-screen">
+          {props.children}
+          <div id="refresher-root" />
+        </body>
       </html>
     </>
   );
